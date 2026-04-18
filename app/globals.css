@@ -1,0 +1,53 @@
+@import "tailwindcss"; 
+@layer base {
+  :root {
+    --background: 210 40% 98%; /* Ultra light sky tint */
+    --foreground: 222 47% 11%; /* Deep slate */
+    --sky-primary: 199 89% 48%; /* Sky Blue */
+  }
+
+  body {
+    background-color: white;
+    color: #0f172a;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  /* Fix for the 'Cannot apply unknown utility class' error */
+  .glass-light {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .text-gradient-sky {
+    background: linear-gradient(to right, #0ea5e9, #2563eb);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Smooth reveal for sections */
+  .reveal-on-scroll {
+    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* SEO-friendly hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Custom Selection Color for Premium feel */
+::selection {
+  background-color: rgba(14, 165, 233, 0.2);
+  color: #0369a1;
+}
