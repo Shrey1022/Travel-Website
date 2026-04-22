@@ -32,59 +32,44 @@ export default function Hero() {
           </p>
         </motion.div>
 
-         {/* RIGHT SLIDER */}
-        <div className="w-full lg:w-1/2 relative overflow-hidden py-16">
-          
-         
-          {/* SLIDER */}
-          <motion.div
-            className="flex gap-8 cursor-grab active:cursor-grabbing"
+        <div className="w-full lg:w-1/2 overflow-hidden relative group py-20">
+          <div className="absolute inset-y-0 left-0 w-32 from-sky-800/20 to-transparent z-10 pointer-events-none" />
+          <div className="absolute inset-y-0 right-0 w-32 from-sky-400/20 to-transparent z-10 pointer-events-none" />
+
+          {/* ✅ ONLY UPDATED PART */}
+          <motion.div 
+            className="flex gap-10 overflow-x-auto scroll-smooth cursor-grab active:cursor-grabbing"
+
             drag="x"
             dragConstraints={{ left: -2000, right: 0 }}
             whileTap={{ cursor: "grabbing" }}
+
             animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              x: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 40,
-                ease: "linear",
-              },
-            }}
+            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
             style={{ width: "fit-content" }}
           >
             {LOOP_DATA.map((trip, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -15, scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 200 }}
+              <motion.div 
+                key={idx} 
+                whileHover={{ y: -20, scale: 1.05 }}
                 onClick={() => router.push(`/destinations/${trip.slug}`)}
-                className="flex flex-col items-center min-w-260px sm:min-w-300px md:min-w-[320px] cursor-pointer"
+                className="flex flex-col items-center gap-8 min-w-[320px] shrink-0 cursor-pointer"
               >
-                <div className="relative w-full aspect-3/4 group">
+                <div className="relative w-full aspect-3/4 group/card">
+                  <div className="absolute inset-10 bg-black/20 blur-3xl opacity-0 group-hover/card:opacity-100 transition-opacity duration-700" />
+                  <div className="absolute inset-0 rounded-[4rem] border border-white/30 backdrop-blur-sm bg-white/5 group-hover/card:border-white transition-all duration-700" />
                   
-                  {/* Glow */}
-                  <div className="absolute inset-6 bg-black/20 blur-2xl opacity-0 group-hover:opacity-100 transition duration-500" />
-
-                  {/* Border */}
-                  <div className="absolute inset-0 rounded-[2.5rem] border border-white/30 bg-white/5 backdrop-blur-md group-hover:border-white transition" />
-
-                  {/* Image container */}
-                  <div className="absolute inset-3 rounded-2rem overflow-hidden shadow-xl">
-                    <motion.img
-                      src={trip.image}
-                      alt={trip.title}
+                  <div className="absolute inset-4 rounded-[3.2rem] overflow-hidden bg-white shadow-2xl">
+                    <motion.img 
+                      src={trip.image} 
+                      alt={trip.title} 
                       className="w-full h-full object-cover"
                       whileHover={{ scale: 1.15 }}
-                      transition={{ duration: 1.2 }}
+                      transition={{ duration: 1.5, ease: "circOut" }}
                     />
-
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
-
-                    {/* Title */}
-                    <div className="absolute bottom-6 left-0 right-0 text-center">
-                      <span className="text-white font-bold text-xs tracking-[0.4em]">
+                    <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-60" />
+                    <div className="absolute bottom-8 left-0 right-0 text-center">
+                      <span className="text-white font-black text-xs tracking-[0.4em] uppercase">
                         {trip.title}
                       </span>
                     </div>
