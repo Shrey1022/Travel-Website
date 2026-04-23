@@ -99,7 +99,7 @@ export default function footer() {
 
           {/* Office Location & Map */}
           <div>
-            <h4 className="text-white font-black uppercase tracking-widest text-[10px] mb-8">Our Studio</h4>
+            <h4 className="text-white font-black uppercase tracking-widest text-[10px] mb-8">Office Address</h4>
             <div className="space-y-6">
               <address className="flex items-start gap-3 not-italic">
                 <MapPin size={18} className="text-sky-500 shrink-0 mt-1" />
