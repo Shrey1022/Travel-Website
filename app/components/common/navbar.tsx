@@ -70,8 +70,7 @@ export default function navbar() {
           ))}
 
           <Link href="/book-now">
-            <button className={`px-6 py-2 rounded-full font-black text-[11px] tracking-widest transition-all duration-300 cursor-pointer ${
-                isScrolled
+            <button className={`px-6 py-2 rounded-full font-black text-[11px] tracking-widest transition-all duration-300 cursor-pointer ${isScrolled
                 ? "bg-sky-500 text-white hover:bg-slate-900"
                 : "bg-white text-sky-500 hover:bg-slate-200"
               }`}>
@@ -81,7 +80,7 @@ export default function navbar() {
         </div>
 
         {/* Mobile Toggle Button */}
-        <button 
+        <button
           className={`md:hidden relative z-110 p-2 transition-colors duration-500 cursor-pointer ${mobileMenuOpen ? "text-slate-900" : textColor}`}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
@@ -94,7 +93,7 @@ export default function navbar() {
       {/* Animated Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -109,17 +108,20 @@ export default function navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.1 }}
                 >
-                  <Link 
-                    href={formatUrl(item)} 
-                    onClick={() => setMobileMenuOpen(false)} 
-                    className="text-3xl font-black text-slate-900 uppercase tracking-tighter flex items-center gap-3 group cursor-pointer"
+                  <Link
+                    href={formatUrl(item)}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-3xl font-black text-slate-900 uppercase tracking-tighter flex items-center justify-center gap-3 group cursor-pointer w-full text-center"
                   >
                     {item}
-                    <ArrowRight size={24} className="opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-sky-500" />
+                    <ArrowRight
+                      size={24}
+                      className="absolute right-6 opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-sky-500"
+                    />
                   </Link>
                 </motion.div>
               ))}
-              
+
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
